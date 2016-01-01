@@ -6,3 +6,12 @@ body {
 a {
   color: #00B7FF;
 }
+
+.center {
+  text-align: center;
+}
+
+.buttonLogin {
+  padding-top: 20px;
+  padding-right: 30px;
+}
