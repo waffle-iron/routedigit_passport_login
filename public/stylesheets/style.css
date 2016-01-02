@@ -11,6 +11,16 @@ a {
   text-align: center;
 }
 
+.textMargin {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.buttonMargin {
+  padding-right: 40px;
+  padding-bottom: 30px;
+}
+
 .buttonLogin {
   padding-top: 20px;
   padding-right: 30px;
