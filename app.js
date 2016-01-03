@@ -15,7 +15,6 @@ var dashboard = require('./routes/dashboard');
 var login = require('./routes/login');
 var register = require('./routes/register');
 
-
 var app = express();
 
 // view engine setup
@@ -30,13 +29,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+  secret: 'keyboard cat',
+  saveUninitialized: true,
+  resave: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
 app.use('/', index);
 app.use('/users', users);
 app.use('/register', register);
 app.use('/dashboard', dashboard);
 app.use('/login', login);
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
