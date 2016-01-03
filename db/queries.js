@@ -7,6 +7,10 @@ function UserTBL(){
   return knex('user_tbl');
 }
 
+function hashPassword(password){
+  return bcrypt.hashSync(password, 10);
+}
+
 module.exports = {
   getAllUsers: function(){
     return UserTBL();
@@ -18,7 +22,7 @@ module.exports = {
     return UserTBL().insert({
       fullName : fullName,
       username: username,
-      password: password
+      password: hashPassword(password)
     })
   }
 }

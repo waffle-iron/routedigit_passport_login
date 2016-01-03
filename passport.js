@@ -8,18 +8,11 @@ passport.use(new Local(
     function(username, password, done){
       query.getSingleUser(username)
       .then((data)=>{
-        let user;
-        if(data.length === 0){
-          return query.getSingleUser(username)
-          .then((data) => {
-            return data[0];
-          })
-        } else {
-          return users[0]
-        }
+        return data[0]
       })
       .then((data) => {
         if(bcrypt.compareSync(password, data.password)){
+          console.log(data.password);
           done(null, data);
         } else {
           done(null, false)
