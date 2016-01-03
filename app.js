@@ -14,6 +14,8 @@ var users = require('./routes/users');
 var dashboard = require('./routes/dashboard');
 var login = require('./routes/login');
 var register = require('./routes/register');
+var logout = require('./routes/logout');
+
 
 var app = express();
 
@@ -51,7 +53,7 @@ app.use(function(req, res, next){
     res.redirect('/')
   }
 })
-
+app.use('/logout', logout);
 app.use('/users', users);
 app.use('/dashboard', dashboard);
 
