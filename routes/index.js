@@ -9,6 +9,10 @@ router.get('/', function(req, res, next) {
   .then((data)=>{
     console.log(data)
   })
+  queries.getSingleUser('john')
+  .then((data)=>{
+    console.log(data);
+  })
   res.render('index', { title: 'Express' });
 });
 

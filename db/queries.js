@@ -10,5 +10,8 @@ function UserTBL(){
 module.exports = {
   getAllUsers: function(){
     return UserTBL();
+  },
+  getSingleUser: function(username){
+    return UserTBL().where('username',username);
   }
 }
