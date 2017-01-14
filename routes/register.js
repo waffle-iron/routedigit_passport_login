@@ -8,10 +8,19 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next){
-  queries.addNewUser(req.body.regname, req.body.regemail, req.body.regpassword)
-  .then(()=>{
-    res.redirect('/')
-  })
+  var regname = req.body.regname;
+  var regemail = req.body.regemail;
+  var regpassword = req.body.regpassword;
+  if(regname.length>0 && regemail.length>0 && regpassword.length>0){
+    queries.addNewUser(regname, regemail, regpassword)
+    .then(()=>{
+      res.redirect('/')
+    })
+  } else {
+    res.send('A required registration field is missing.');
+  }
+
+
 })
 
 module.exports = router;
