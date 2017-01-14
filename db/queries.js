@@ -16,13 +16,13 @@ module.exports = {
     return UserTBL();
   },
   getSingleUser: function(username){
-    return UserTBL().where('username',username);
+    return UserTBL().where('username',username.toLowerCase());
   },
   addNewUser: function(fullName, username, password){
     return UserTBL().insert({
-      fullName : fullName,
-      username: username,
-      password: hashPassword(password)
+      fullName : fullName.toLowerCase(),
+      username: username.toLowerCase(),
+      password: hashPassword(password.toLowerCase())
     })
   }
 }

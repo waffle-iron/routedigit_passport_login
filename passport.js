@@ -6,12 +6,12 @@ var bcrypt = require('bcrypt');
 
 passport.use(new Local(
     function(username, password, done){
-      query.getSingleUser(username)
+      query.getSingleUser(username.toLowerCase())
       .then((data)=>{
         return data[0]
       })
       .then((data) => {
-        if(bcrypt.compareSync(password, data.password)){
+        if(bcrypt.compareSync(password.toLowerCase(), data.password)){
           console.log(data.password);
           done(null, data);
         } else {
@@ -33,7 +33,7 @@ passport.deserializeUser(function(username, done){
   .then((data)=>{
     let user;
     if(data.length === 0){
-      return query.getSingleUser(username)
+      return query.getSingleUser(username.toLowerCase())
       .then((data) => {
         return data[0].username;
       })
