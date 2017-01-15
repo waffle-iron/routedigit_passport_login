@@ -4,9 +4,8 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'postgresql://localhost:5432/localpassport'
+    connection: process.env.LOCAL_DATABASE_URL
   },
-
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL
