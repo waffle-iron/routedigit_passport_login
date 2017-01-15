@@ -18,13 +18,9 @@ router.get('/', function(req, res, next) {
         var restOfWord = strArr[i].slice(1);
 
         newArr[i] = FirstLetter + restOfWord;
-
       }
-
       return newArr.join(' ');
-
     }
-
     res.render('dashboard', { title: capitalize(str) });
   })
 });

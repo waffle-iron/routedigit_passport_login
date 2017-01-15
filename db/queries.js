@@ -18,11 +18,12 @@ module.exports = {
   getSingleUser: function(username){
     return UserTBL().where('username',username.toLowerCase());
   },
-  addNewUser: function(fullName, username, password){
+  addNewUser: function(fullName, username, password, gender){
     return UserTBL().insert({
       fullName : fullName.toLowerCase(),
       username: username.toLowerCase(),
-      password: hashPassword(password.toLowerCase())
+      password: hashPassword(password.toLowerCase()),
+      gender: gender
     })
   }
 }
